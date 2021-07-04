@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        //первое задание//
+        var a = 1, b = 1, c, d;
+        c = ++a; alert(c);           // в этом случае идет префикционое увелечение на еденицу, и мы сразу увидим 2 и в переменной а и с
+        d = b++; alert(d);           // в этом случае увелечение на еденицу происходит только с переменной b, а переменная d остается равной 1 до следуещего обращения к данному выражению
+        c = (2 + ++a); alert(c);      // т.к. переменная а уже хранит значение 2, префекционно в данном выражении станет 3, и сумма будет 5
+        d = (2 + b++); alert(d);      // переменная b хранит значение 2, но увеличится в следуещем обращении
+        alert(a);                    // переменная а хранит значение 3 из 3его выражения
+        alert(b);                    // переменная b хранит значение 3 из 4ого выражения
+
+        //второе задание//
+        let v = 2; // присвоили переменной v значение 2
+        let x = 1 + (v *= 2); // сначала в переменную v положили значение (умножь себя на 2) тоесть 4, а затем сложили с 1
+        console.log(v)  // 4, берется последнее вложеное значение переменной
+        console.log(x)  // 5
+
+        //третье задание//
+        let o = parseInt(((Math.random() < 0.5) ? -1 : 1) * Math.random() * 100)
+        let p = parseInt(((Math.random() < 0.5) ? -1 : 1) * Math.random() * 100)
+        if (o >= 0 && p >= 0) {
+            let i = o - p
+            console.log(i)
+        } else if (o < 0 && p < 0) {
+            let u = o * p
+            console.log(u)
+        } else {
+            let t = o + p
+            console.log(t)
+        }
+        console.log(o)
+        console.log(p)
+
+        //четвертое задание//
+        let num1 = parseInt(prompt("Введите число 1"))
+        let num2 = parseInt(prompt("Введите число 2"))
+        function sum(num1, num2) {
+            return num1 + num2
+        }
+        console.log(sum(num1, num2))
+        function sub(num1, num2) {
+            return num1 - num2
+        }
+        console.log(sub(num1, num2))
+        function mul(num1, num2) {
+            return num1 * num2
+        }
+        console.log(mul(num1, num2))
+        function seg(num1, num2) {
+            return num1 / num2
+        }
+        console.log(seg(num1, num2))
+
+        //пятое задание//
+        let num1 = parseInt(prompt("Введите число 1"))
+        let num2 = parseInt(prompt("Введите число 2"))
+        let userOperation = prompt("Укажите какую опрецию провести '+' '-' '*' '/'")
+        function sum(num1, num2) {
+            return num1 + num2
+        }
+        function sub(num1, num2) {
+            return num1 - num2
+        }
+        function mul(num1, num2) {
+            return num1 * num2
+        }
+        function seg(num1, num2) {
+            return num1 / num2
+        }
+        function mathOperation(num1, num2, userOperation) {
+            switch (userOperation) {
+                case "+":
+                    return sum(num1, num2);
+                case "-":
+                    return sub(num1, num2);
+                case "*":
+                    return mul(num1, num2);
+                case "/":
+                    return seg(num1, num2);
+            }
+        }
+        console.log(mathOperation(num1, num2, userOperation))
+    </script>
+</body>
+
+</html>
