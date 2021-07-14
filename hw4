@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        //первое задание//
+        //1.1 es5
+        function Product(name, price) {
+            this.name = name
+            this.price = price
+        }
+        Product.prototype.make25PercentDiscount = function () {
+            console.log((this.price / 100) * 75)
+        }
+        let product1 = new Product('phone', 300)
+        product1.make25PercentDiscount()
+
+        //1.1 es6
+        class prod {
+            constructor(name, price) {
+                this.name = name
+                this.price = price
+            }
+            make25PercentDiscount() {
+                console.log((this.price / 100) * 75)
+            }
+        }
+        let product2 = new prod('tele', 500)
+        product2.make25PercentDiscount()
+
+        //второе задание
+        //1.2 es5
+        function Post(autor, text, date) {
+            this.author = autor
+            this.text = text
+            this.date = date
+        }
+        Post.prototype.show = function () {
+            console.log(this)
+        }
+        Post.prototype.edit = function (text2) {
+            this.text = text2
+        }
+        let post1 = new Post("alex", 'text1', '15.07')
+        post1.show();
+        post1.edit('text2')
+        post1.show();
+
+        function AttachedPost(autor, text, date, highlighted) {
+            Post.call(this, autor, text, date);
+            this.highlighted = highlighted
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+        AttachedPost.prototype.makeTextHighlighted = function (highlighted1) {
+            this.highlighted = highlighted1
+        }
+        let post2 = new AttachedPost('ivan', 'txt3', '10.08', false)
+        post2.show()
+        post2.makeTextHighlighted(true)
+        post2.show()
+
+        //es6
+        class Post {
+            constructor(autor, text, date) {
+                this.author = autor
+                this.text = text
+                this.date = date
+            }
+            show() {
+                console.log(this)
+            }
+            edit(text2) {
+                this.text = text2
+            }
+        }
+        class AttachedPost extends Post {
+            constructor(autor, text, date, highlighted) {
+                super(autor, text, date)
+                this.highlighted = highlighted
+            }
+
+            makeTextHighlighted(highlighted1) {
+                this.highlighted = highlighted1
+            }
+        }
+        let post1 = new Post("alex", 'text1', '15.07')
+        post1.show();
+        post1.edit('text2')
+        post1.show();
+        let post2 = new AttachedPost('ivan', 'txt3', '10.08', false)
+        post2.show()
+        post2.makeTextHighlighted(true)
+        post2.show()
+    </script>
+</body>
+
+</html>
